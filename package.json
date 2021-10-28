@@ -1,0 +1,20 @@
+{
+  "name": "tourism-or-delivery-website-server-side-babulakterfsd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/programming-hero-web-course1/tourism-or-delivery-website-server-side-babulakterfsd.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/programming-hero-web-course1/tourism-or-delivery-website-server-side-babulakterfsd/issues"
+  },
+  "homepage": "https://github.com/programming-hero-web-course1/tourism-or-delivery-website-server-side-babulakterfsd#readme"
+}

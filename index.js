@@ -21,6 +21,28 @@ async function run() {
      await client.connect();
      const database = client.db("tourmama");
     const packageCollection = database.collection("packages");
+  
+    //get all packages api
+    app.get("/allpackages", async (req, res) => {
+        const cursor = packageCollection.find({});
+        const packages = await cursor.toArray();
+        res.send(packages);
+      });
+
+
+       // add a package
+    app.post("/addpackage", async (req, res) => {
+      const newPack = req.body;
+      const result = await packageCollection.insertOne(newPack);
+      console.log("got new pack", req.body);
+      console.log("successfully added pack", result);
+      res.json(result);
+    });
+
+
+
+
+
 
     console.log('connected to tourmama database');
   }

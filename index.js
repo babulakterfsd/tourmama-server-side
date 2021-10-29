@@ -21,6 +21,7 @@ async function run() {
      await client.connect();
      const database = client.db("tourmama");
     const packageCollection = database.collection("packages");
+    const orderCollection = database.collection("orders");
   
     //get all packages api
     app.get("/allpackages", async (req, res) => {
@@ -28,6 +29,24 @@ async function run() {
         const packages = await cursor.toArray();
         res.send(packages);
       });
+
+   // get my orders
+    app.get("/myorders/:email", async (req, res) => {
+      const result = await orderCollection.find({
+        email: req.params.email,
+      }).toArray();
+      res.send(result);
+    });
+
+
+     //get Ordered item
+     app.get('/order/:packid', async(req,res) => {
+      const packageId = req.params.packid;
+      const query = { _id: ObjectId(packageId)};
+      const package = await packageCollection.findOne(query);
+      console.log("load user with id", packageId);
+      res.send(package);
+    })
 
 
        // add a package
@@ -39,9 +58,14 @@ async function run() {
       res.json(result);
     });
 
-
-
-
+       //confirm order
+    app.post("/placeorder", async (req, res) => {
+      const orderpack = req.body;
+      const result = await orderCollection.insertOne(orderpack);
+      console.log("order placed", req.body);
+      console.log("successfully ordered", result);
+      res.json(result);
+    });
 
 
     console.log('connected to tourmama database');

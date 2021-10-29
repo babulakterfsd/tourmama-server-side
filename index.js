@@ -67,6 +67,15 @@ async function run() {
       res.json(result);
     });
 
+     //delete myorder
+    //  app.delete('/deletemyorder/:id', async(req,res) => {
+    //   const packageId = req.params.id;
+    //   const query = { _id: ObjectId(packageId) };
+    //   const package = await orderCollection.deleteOne(query);
+    //   console.log("delete pack with id", packageId);
+    //   res.json(package);
+    // })
+
 
     console.log('connected to tourmama database');
   }

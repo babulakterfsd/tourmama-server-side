@@ -67,14 +67,20 @@ async function run() {
       res.json(result);
     });
 
-     //delete myorder
-    //  app.delete('/deletemyorder/:id', async(req,res) => {
-    //   const packageId = req.params.id;
-    //   const query = { _id: ObjectId(packageId) };
-    //   const package = await orderCollection.deleteOne(query);
-    //   console.log("delete pack with id", packageId);
-    //   res.json(package);
-    // })
+    //get all order
+    app.get('/allorder', async (req, res) => {
+      const cursor = orderCollection.find({});
+      const services = await cursor.toArray();
+      res.json(services);
+  });
+  // delete a package
+  app.delete("/allorder/:id", async (req, res) => {
+    const id = req.params.id;
+    console.log('deleted id ',id)
+    const query = { _id: ObjectId(id) };
+    const result = await orderCollection.deleteOne(query);
+    res.json(result);
+});
 
 
     console.log('connected to tourmama database');

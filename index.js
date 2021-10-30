@@ -73,7 +73,7 @@ async function run() {
       const services = await cursor.toArray();
       res.json(services);
   });
-  // delete a package
+  // delete a single package
   app.delete("/allorder/:id", async (req, res) => {
     const id = req.params.id;
     console.log('deleted id ',id)

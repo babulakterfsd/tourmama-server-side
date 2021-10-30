@@ -82,6 +82,21 @@ async function run() {
     res.json(result);
 });
 
+//update order status
+app.put('/allorder/:id', async (req, res) => {
+  const id = req.params.id;
+  console.log(req.body);
+  const filter = { _id: ObjectId(id) };
+  const options = { upsert: true };
+  const packUpdate = {
+      $set: {
+          status: 'approved'
+      }
+  };
+  const result = await orderCollection.updateOne(filter, packUpdate, options);
+  res.json(result)
+})
+
 
     console.log('connected to tourmama database');
   }

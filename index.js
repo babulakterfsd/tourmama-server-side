@@ -107,7 +107,7 @@ app.put('/allorder/:id', async (req, res) => {
 run().catch(console.dir)
 
 app.get('/', (req,res) => {
-    res.send('Running Tourmama Server')
+    res.send('Running Tourmama Server..')
 })
 
 app.listen(port, () => {
